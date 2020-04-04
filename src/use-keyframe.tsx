@@ -26,13 +26,7 @@ function useKeyframe(keyframeBlocks: [] = []) {
     <Keyframe identity={identity}>
       {blockKeys.map((keyframeSelector, index) => {
         const value = keyframeBlocks[keyframeSelector]
-        if (keyframeSelector === 'from') {
-          return <Keyframe.From key={index} value={value} />
-        } else if (keyframeSelector === 'to') {
-          return <Keyframe.To key={index} value={value} />
-        } else if (typeof keyframeSelector === 'string') {
-          return <Keyframe.Percent key={index} percent={parseInt(keyframeSelector)} value={value} />
-        }
+        return <Keyframe.Block key={index} selector={keyframeSelector} value={value} />
       })}
     </Keyframe>
   )

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<style>
+  @keyfame animation12 {
+  from { opacity:0 }
+  50% { opacity:0.5 }
+  to { opacity:1 }
+  }
+</style>
+`;
