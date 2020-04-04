@@ -1,0 +1,30 @@
+{
+  "name": "react-style",
+  "version": "0.1.0",
+  "description": "",
+  "module": "index.js",
+  "scripts": {
+    "build": "tsc --target ESNext --module ES6 --outDir dist/esm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huozhi/react-style.git"
+  },
+  "keywords": [
+    "react",
+    "style",
+    "css",
+    "dynamic-style"
+  ],
+  "author": "huozhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huozhi/react-style/issues"
+  },
+  "homepage": "https://github.com/huozhi/react-style#readme",
+  "devDependencies": {
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "typescript": "3.8.3"
+  }
+}
