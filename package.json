@@ -5,6 +5,7 @@
   "module": "index.js",
   "scripts": {
     "test": "jest",
+    "test:update": "yarn test --updateSnapshot",
     "build": "tsc --target ESNext --module ES6 --outDir dist/esm"
   },
   "repository": {

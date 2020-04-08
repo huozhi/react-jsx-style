@@ -1,20 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import React, {useMemo} from 'react'
+import {createCssRules} from './react-css-transform';
 
-function convertStyleObjectToCss(styles: {}): string {
-  let cssRules = []
-  for (const key in styles) {
-    const value = styles[key]
-    cssRules.push(`${key}:${value}`)
-  }
-  return cssRules.join(';')
-}
+const KeyframeBlock = ({selector, value: styles} : {selector: string, value: {}}) => {
+  const css = useMemo(() => {
+    return createCssRules(styles)
+      .map(({name, value}) => `${name}:${value};`)
+      .join('');
+  }, [styles]);
 
-const KeyframeBlock = ({selector, value} : {selector: string, value: {}}) => {
-  const [css, setCss] = useState(convertStyleObjectToCss(value))
-  useEffect(() => {
-    const convertedCss = convertStyleObjectToCss(value)
-    setCss(convertedCss)
-  }, [value])
   return (
     <>{`${selector} { ${css} }`}</>
   )
@@ -28,7 +21,7 @@ type KeyframeProps = {
 function Keyframe({identity, children} : KeyframeProps) {
   const styleTag = (
     <style>
-      {`@keyfame ${identity} {`}
+      {`@keyframes ${identity} {`}
         {children}
       {`}`}
     </style>
