@@ -1,4 +1,4 @@
-# React Style
+# React JSX Style
 > create dynamic injected styles with react component or hooks
 
 
