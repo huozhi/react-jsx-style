@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Keyframe} from '../src'
+import {Keyframe, useKeyframe} from '../'
 
 function AnimatedBlock() {
   return (
@@ -12,18 +12,45 @@ function AnimatedBlock() {
         transformOrigin: 'center',
       }}
     >
-      <h3>see me scale</h3>
-      <Keyframe identity={'scale_2'}>
-        <Keyframe.Block selector={'from'} value={{WebkitTransform: 'scale(1)'}} />
-        <Keyframe.Block selector={'to'} value={{WebkitTransform: 'scale(2)'}} />
-      </Keyframe>
+      <h3>scale</h3>
+      <style>
+        <Keyframe identity={'scale_2'}>
+          <Keyframe.Block selector={'from'} value={{WebkitTransform: 'scale(1)'}} />
+          <Keyframe.Block selector={'to'} value={{WebkitTransform: 'scale(2)'}} />
+        </Keyframe>
+      </style>
+    </div>
+  )
+}
+
+function HookAnimationBlock() {
+  return (
+    <div>
+      <div
+        style={{
+          width: 60,
+          height: 60,
+          backgroundColor: 'orange',
+          animationName: useKeyframe({
+            from: {WebkitTransform: `rotate(0deg)`},
+            to: {WebkitTransform: `rotate(135deg)`},
+          }),
+          animationDuration: '400ms',
+          animationIterationCount: 'infinite',
+        }}
+      >
+        Rotate
+      </div>
     </div>
   )
 }
 
 function App() {
   return (
-    <AnimatedBlock />
+    <div>
+      <AnimatedBlock />
+      <HookAnimationBlock />
+    </div>
   )
 }
 
