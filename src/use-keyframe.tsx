@@ -7,7 +7,6 @@ function usePortal(portal: any, root: HTMLElement): void {
   const styleTag = styleTagRef.current
   const portalRef = useRef(null)
   useEffect(() => {
-    console.log('portal')
     portalRef.current = render(portal, styleTag)
   }, [portal])
 

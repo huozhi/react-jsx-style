@@ -7,6 +7,7 @@
   "scripts": {
     "test": "jest",
     "test:update": "yarn test --updateSnapshot",
+    "prepublishOnly": "rm -rf ./dist && yarn build",
     "build": "yarn build:cjs && yarn build:esm",
     "build:cjs": "tsc --target ES5 --module Commonjs --outDir dist/cjs",
     "build:esm": "tsc --target ESNext --module ES6 --outDir dist/esm"
@@ -20,6 +21,10 @@
     "style",
     "css",
     "dynamic-style"
+  ],
+  "files": [
+    "dist",
+    "*.md"
   ],
   "author": "huozhi",
   "license": "MIT",
