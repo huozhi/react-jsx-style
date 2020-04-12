@@ -19,14 +19,13 @@ type KeyframeProps = {
 }
 
 function Keyframe({identity, children} : KeyframeProps) {
-  const styleTag = (
-    <style>
+  return (
+    <>
       {`@keyframes ${identity} {`}
         {children}
       {`}`}
-    </style>
+    </>
   )
-  return styleTag
 }
 
 Keyframe.Block = KeyframeBlock

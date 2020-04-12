@@ -3,13 +3,24 @@ import {render} from 'react-dom'
 import Keyframe from './keyframe'
 
 function usePortal(portal: any, root: HTMLElement): void {
-  const portalRef = useRef(render(portal, root))
+  const styleTagRef = useRef(document.createElement('style'))
+  const styleTag = styleTagRef.current
+  const portalRef = useRef(null)
   useEffect(() => {
-    root.appendChild(portalRef.current)
-    return () => {
-      root.removeChild(portalRef.current)
+    console.log('portal')
+    portalRef.current = render(portal, styleTag)
+  }, [portal])
+
+  useEffect(() => {
+    if (root) {
+      root.appendChild(styleTag);
     }
-  }, [])
+    return () => {
+      if (root) {
+        root.removeChild(styleTag);
+      }
+    }
+  }, [root])
 }
 
 /*
@@ -19,8 +30,10 @@ function usePortal(portal: any, root: HTMLElement): void {
     to: {...}
   },
 */
-function useKeyframe(keyframeBlocks: [] = []) {
-  const identity = `ReactStyleKeyframe${Math.random() * 1000}`
+function useKeyframe(
+  keyframeBlocks: {} = {},
+  identity = `ReactStyleKeyframe${Math.round(Math.random() * 1000)}`
+) {
   const blockKeys =  Object.keys(keyframeBlocks)
   const keyframeTag = (
     <Keyframe identity={identity}>
